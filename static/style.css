@@ -1,0 +1,636 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    min-height: 100vh;
+
+    background: #222;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.app {
+    width: 390px;
+    min-height: 780px;
+
+    background: linear-gradient(
+        180deg,
+        #72c9ed,
+        #b8eafa
+    );
+
+    border: 6px solid #303b43;
+    border-radius: 35px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4);
+
+    margin: 0 auto;
+}
+
+
+.screen {
+    min-height: 768px;
+    padding: 20px;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ==========================================
+   HOME
+========================================== */
+
+.home-screen {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+
+.home-icon {
+    font-size: 40px;
+    line-height: 1;
+}
+
+
+.home-stars {
+    text-align: center;
+    font-size: 25px;
+
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+
+.home-title {
+    text-align: center;
+
+    color: #193143;
+
+    font-size: 27px;
+    font-weight: 900;
+
+    text-shadow:
+        2px 2px white;
+}
+
+
+.home-subtitle {
+    text-align: center;
+
+    margin-top: 8px;
+
+    color: #193143;
+
+    font-size: 16px;
+    font-weight: 900;
+}
+
+
+.home-robot-image {
+    width: 150px;
+    height: 150px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 45px auto 15px;
+}
+
+
+.home-description {
+    text-align: center;
+
+    color: #193143;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    line-height: 1.4;
+
+    margin-bottom: 35px;
+}
+
+
+.home-buttons {
+    padding: 0 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.orange-btn {
+    width: 100%;
+    height: 65px;
+
+    margin-top: 14px;
+
+    border: 4px solid #c85d11;
+    border-radius: 27px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffb52e,
+            #ff7718
+        );
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    text-shadow:
+        2px 2px #a84b0c;
+
+    box-shadow:
+        0 5px #a94e12;
+
+    cursor: pointer;
+}
+
+
+.orange-btn:active {
+    transform: translateY(4px);
+
+    box-shadow:
+        0 1px #a94e12;
+}
+
+
+.new-game {
+    width: 100%;
+    height: 50px;
+
+    margin-top: 17px;
+
+    border: 3px solid #35789c;
+    border-radius: 22px;
+
+    background: #dff5ff;
+
+    color: #24516a;
+
+    font-family: inherit;
+
+    font-size: 17px;
+    font-weight: 900;
+
+    cursor: pointer;
+}
+
+
+/* ==========================================
+   HOW TO PLAY
+========================================== */
+
+.how-to-play {
+    text-align: center;
+}
+
+
+.how-to-play .home-icon {
+    font-size: 55px;
+
+    display: block;
+
+    margin-bottom: 15px;
+}
+
+
+.how-to-play h2 {
+    font-size: 25px;
+
+    color: #193143;
+
+    margin-bottom: 12px;
+}
+
+
+.rules {
+    margin: 18px auto;
+
+    padding: 20px;
+
+    background:
+        rgba(255, 255, 255, .6);
+
+    border: 4px solid #72a8bc;
+
+    border-radius: 25px;
+
+    text-align: left;
+
+    width: 90%;
+}
+
+
+.rules h3 {
+    color: #24516a;
+
+    font-size: 17px;
+
+    margin-top: 16px;
+    margin-bottom: 5px;
+}
+
+
+.rules h3:first-child {
+    margin-top: 0;
+}
+
+
+.rules p {
+    color: #193143;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==========================================
+   GAME HEADER
+========================================== */
+
+.header {
+    height: 82px;
+
+    background: #55ace0;
+
+    border-bottom: 6px solid #287faa;
+
+    margin: -20px -20px 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.header h1 {
+    color: white;
+
+    font-size: 21px;
+
+    font-weight: 900;
+
+    text-shadow:
+        2px 2px #24516a;
+}
+
+
+.header .home-icon {
+    font-size: 22px;
+}
+
+
+.stars {
+    font-size: 20px;
+}
+
+
+/* ==========================================
+   GAME INTRO
+========================================== */
+
+.intro {
+    padding: 25px 0 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+.robot {
+    font-size: 75px;
+}
+
+
+.intro h2 {
+    color: #193143;
+
+    font-size: 20px;
+}
+
+
+.intro p {
+    margin-top: 7px;
+
+    color: #29485b;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   GAME CARD
+========================================== */
+
+.game-card {
+    padding: 20px 15px;
+
+    background:
+        rgba(255,255,255,.55);
+
+    border: 4px solid #72a8bc;
+
+    border-radius: 28px;
+
+    text-align: center;
+}
+
+
+.game-card h2 {
+    text-align: center;
+
+    color: #193143;
+
+    font-size: 21px;
+}
+
+
+.instruction {
+    text-align: center;
+
+    margin: 7px 0 12px;
+
+    color: #345568;
+
+    font-weight: bold;
+}
+
+
+.range {
+    text-align: center;
+
+    margin-bottom: 12px;
+
+    color: #193143;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   INPUT
+========================================== */
+
+.input-box {
+    background: white;
+
+    border: 4px solid #6d8997;
+
+    border-radius: 24px;
+
+    height: 70px;
+
+    overflow: hidden;
+}
+
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    text-align: center;
+
+    font-size: 30px;
+
+    font-weight: 900;
+
+    font-family: inherit;
+}
+
+
+.input-box input::-webkit-inner-spin-button,
+.input-box input::-webkit-outer-spin-button {
+
+    -webkit-appearance: none;
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.message {
+    text-align: center;
+
+    margin-top: 12px;
+
+    color: #28552c;
+
+    font-weight: bold;
+}
+
+
+.result {
+    min-height: 70px;
+
+    margin-top: 15px;
+
+    padding: 10px;
+
+    background: #eaffdf;
+
+    border: 4px solid #5ca35c;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: #28552c;
+
+    font-size: 17px;
+
+    font-weight: 900;
+}
+
+
+.attempts {
+    text-align: center;
+
+    margin-top: 13px;
+
+    color: #193143;
+
+    font-weight: 900;
+}
+
+
+/* ==========================================
+   WINNER
+========================================== */
+
+.winner-card {
+    margin: 30px 20px;
+
+    padding: 30px 20px;
+
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    border: 4px solid #72a8bc;
+
+    border-radius: 28px;
+
+    text-align: center;
+}
+
+
+.winner-image {
+    width: 130px;
+    height: 130px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 15px;
+}
+
+
+.winner-card h2 {
+    color: #193143;
+
+    font-size: 27px;
+
+    font-weight: 900;
+
+    text-align: center;
+
+    margin-bottom: 12px;
+}
+
+
+.winner-message {
+    color: #345568;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    margin-bottom: 20px;
+}
+
+
+.winner-result {
+    min-height: 65px;
+
+    padding: 15px;
+
+    background: #eaffdf;
+
+    border: 4px solid #5ca35c;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #28552c;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    margin-bottom: 15px;
+}
+
+
+.winner-attempts {
+    color: #193143;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 430px) {
+
+    body {
+        background: #72c9ed;
+    }
+
+
+    .app {
+        width: 100%;
+
+        min-height: 100vh;
+
+        border: none;
+
+        border-radius: 0;
+    }
+
+
+    .screen {
+        min-height: 100vh;
+    }
+
+}
+
+.home-icon-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Guess My Number</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ======================================
+         HOME SCREEN
+    ======================================= -->
+
+    <section id="homeScreen" class="screen home-screen">
+
+        <img src="{{ url_for('static', filename='images/joystick1.webp') }}"
+     class="home-icon-image"
+     alt="Joystick">
+
+        <div class="home-stars">
+            ⭐ ⭐ ⭐
+        </div>
+
+        <h1 class="home-title">
+            GUESS MY NUMBER
+        </h1>
+
+        <p class="home-subtitle">
+            A FUN NUMBER GUESSING GAME
+        </p>
+
+        <!-- ROBOT IMAGE -->
+
+        <img src="{{ url_for('static', filename='images/robot.png') }}"
+             class="home-robot-image"
+             alt="Robot">
+
+        <p class="home-description">
+            Can you guess the secret number?
+            You only have 10 attempts!
+        </p>
+
+        <div class="home-buttons">
+
+            <button class="orange-btn"
+                    onclick="showGame()">
+
+                ▶ PLAY GAME
+
+            </button>
+
+            <button class="new-game"
+                    onclick="showHowToPlay()">
+
+                ℹ HOW TO PLAY
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         GAME SCREEN
+    ======================================= -->
+
+    <section id="gameScreen"
+             class="screen hidden">
+
+        <div class="header">
+
+            <span class="home-icon">
+                🎮
+            </span>
+
+            <h1>
+                GUESS MY NUMBER
+            </h1>
+
+            <span class="stars">
+                ⭐
+            </span>
+
+        </div>
+
+
+        <!-- PLAYER 1 -->
+
+        <div id="player1">
+
+            <div class="intro">
+
+                <div class="robot">
+                    🤖
+                </div>
+
+                <div>
+
+                    <h2>
+                        PLAYER 1
+                    </h2>
+
+                    <p>
+                        Choose a secret number
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="game-card">
+
+                <h2>
+                    SET SECRET NUMBER
+                </h2>
+
+                <p class="instruction">
+                    Choose a number between 1 and 100
+                </p>
+
+                <p class="range">
+                    🔢 1 - 100
+                </p>
+
+                <div class="input-box">
+
+                    <input type="number"
+                           id="secretNumber"
+                           min="1"
+                           max="100"
+                           placeholder="?"
+
+                    >
+
+                </div>
+
+                <button class="orange-btn"
+                        onclick="startGame()">
+
+                    SET SECRET NUMBER
+
+                </button>
+
+                <p id="startMessage"
+                   class="message">
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLAYER 2 -->
+
+        <div id="player2"
+             class="hidden">
+
+            <div class="intro">
+
+                <div class="robot">
+                    🤖
+                </div>
+
+                <div>
+
+                    <h2>
+                        PLAYER 2
+                    </h2>
+
+                    <p>
+                        Guess the secret number
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="game-card">
+
+                <h2>
+                    MAKE YOUR GUESS
+                </h2>
+
+                <p class="instruction">
+                    Enter your guess
+                </p>
+
+                <p class="range">
+                    🔢 1 - 100
+                </p>
+
+                <div class="input-box">
+
+                    <input type="number"
+                           id="guess"
+                           min="1"
+                           max="100"
+                           placeholder="?"
+
+                    >
+
+                </div>
+
+                <button class="orange-btn"
+                        onclick="makeGuess()">
+
+                    GUESS
+
+                </button>
+
+                <div id="result"
+                     class="result">
+
+                    Your result will appear here
+
+                </div>
+
+                <p id="attempts"
+                   class="attempts">
+
+                    Attempts: 0 / 10
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ======================================
+         HOW TO PLAY
+    ======================================= -->
+
+    <section id="howToPlay"
+             class="screen hidden how-to-play">
+
+        <div class="home-icon">
+            ℹ️
+        </div>
+
+        <h2>
+            HOW TO PLAY
+        </h2>
+
+
+        <div class="rules">
+
+            <h3>
+                👤 Player 1
+            </h3>
+
+            <p>
+                Choose a secret number between
+                1 and 100.
+            </p>
+
+
+            <h3>
+                👤 Player 2
+            </h3>
+
+            <p>
+                Try to guess Player 1's secret number.
+            </p>
+
+
+            <h3>
+                📈 Too Low
+            </h3>
+
+            <p>
+                Your guess is smaller than the
+                secret number.
+            </p>
+
+
+            <h3>
+                📉 Too High
+            </h3>
+
+            <p>
+                Your guess is bigger than the
+                secret number.
+            </p>
+
+
+            <h3>
+                🏆 Winning
+            </h3>
+
+            <p>
+                Player 2 wins if the number is
+                guessed correctly.
+            </p>
+
+            <p>
+                Player 1 wins if Player 2 uses
+                all 10 attempts.
+            </p>
+
+        </div>
+
+
+        <button class="orange-btn"
+                onclick="showHome()">
+
+            ← BACK HOME
+
+        </button>
+
+    </section>
+
+
+    <!-- ======================================
+         WINNER SCREEN
+    ======================================= -->
+
+    <section id="winnerScreen"
+             class="screen hidden">
+
+        <div class="winner-card">
+
+            <!-- TROPHY IMAGE -->
+
+            <img src="{{ url_for('static', filename='images/trophy.png') }}"
+                 class="winner-image"
+                 alt="Winner">
+
+            <h2 id="winnerTitle">
+                PLAYER 2 WINS!
+            </h2>
+
+            <p id="winnerMessage"
+               class="winner-message">
+            </p>
+
+            <div id="winnerResult"
+                 class="winner-result">
+            </div>
+
+            <p id="winnerAttempts"
+               class="winner-attempts">
+            </p>
+
+            <button class="orange-btn"
+                    onclick="newGame()">
+
+                🔄 NEW GAME
+
+            </button>
+
+            <button class="new-game"
+                    onclick="showHome()">
+
+                ← HOME
+
+            </button>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ======================================
+     JAVASCRIPT
+======================================= -->
+
+<script>
+
+
+// ==========================================
+// SHOW HOME
+// ==========================================
+
+function showHome() {
+
+    document.getElementById("homeScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("gameScreen")
+        .classList.add("hidden");
+
+    document.getElementById("howToPlay")
+        .classList.add("hidden");
+
+    document.getElementById("winnerScreen")
+        .classList.add("hidden");
+}
+
+
+// ==========================================
+// SHOW GAME
+// ==========================================
+
+function showGame() {
+
+    document.getElementById("homeScreen")
+        .classList.add("hidden");
+
+    document.getElementById("gameScreen")
+        .classList.remove("hidden");
+
+    document.getElementById("howToPlay")
+        .classList.add("hidden");
+
+    document.getElementById("winnerScreen")
+        .classList.add("hidden");
+
+    document.getElementById("player1")
+        .classList.remove("hidden");
+
+    document.getElementById("player2")
+        .classList.add("hidden");
+}
+
+
+// ==========================================
+// SHOW HOW TO PLAY
+// ==========================================
+
+function showHowToPlay() {
+
+    document.getElementById("homeScreen")
+        .classList.add("hidden");
+
+    document.getElementById("gameScreen")
+        .classList.add("hidden");
+
+    document.getElementById("howToPlay")
+        .classList.remove("hidden");
+
+    document.getElementById("winnerScreen")
+        .classList.add("hidden");
+}
+
+
+// ==========================================
+// START GAME
+// PLAYER 1
+// ==========================================
+
+function startGame() {
+
+    const number =
+        document.getElementById("secretNumber").value;
+
+    if (number === "") {
+
+        document.getElementById("startMessage")
+            .textContent =
+            "Please enter a number.";
+
+        return;
+    }
+
+
+    fetch("/start_game", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            number: number
+        })
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("startMessage")
+            .textContent = data.message;
+
+
+        if (data.success) {
+
+            // Hide Player 1
+
+            document.getElementById("player1")
+                .classList.add("hidden");
+
+
+            // Show Player 2
+
+            document.getElementById("player2")
+                .classList.remove("hidden");
+
+
+            // Clear guess box
+
+            document.getElementById("guess")
+                .value = "";
+
+
+            document.getElementById("result")
+                .textContent =
+                "Start guessing!";
+
+
+            document.getElementById("attempts")
+                .textContent =
+                "Attempts: 0 / 10";
+        }
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+    });
+
+}
+
+
+// ==========================================
+// PLAYER 2 GUESS
+// ==========================================
+
+function makeGuess() {
+
+    const guess =
+        document.getElementById("guess").value;
+
+
+    if (guess === "") {
+
+        document.getElementById("result")
+            .textContent =
+            "Please enter a number.";
+
+        return;
+    }
+
+
+    fetch("/guess", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            guess: guess
+        })
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        document.getElementById("result")
+            .textContent = data.message;
+
+
+        document.getElementById("attempts")
+            .textContent =
+            "Attempts: " +
+            data.attempts +
+            " / 10";
+
+
+        // GAME OVER
+
+        if (data.game_over) {
+
+            showWinner(data);
+
+        }
+
+        else {
+
+            // Clear input
+
+            document.getElementById("guess")
+                .value = "";
+
+        }
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+    });
+
+}
+
+
+// ==========================================
+// SHOW WINNER
+// ==========================================
+
+function showWinner(data) {
+
+    document.getElementById("homeScreen")
+        .classList.add("hidden");
+
+    document.getElementById("gameScreen")
+        .classList.add("hidden");
+
+    document.getElementById("howToPlay")
+        .classList.add("hidden");
+
+    document.getElementById("winnerScreen")
+        .classList.remove("hidden");
+
+
+    document.getElementById("winnerTitle")
+        .textContent =
+        data.winner + " WINS!";
+
+
+    document.getElementById("winnerMessage")
+        .textContent =
+        data.message;
+
+
+    document.getElementById("winnerAttempts")
+        .textContent =
+        "Attempts used: " +
+        data.attempts +
+        " / 10";
+
+
+    if (data.secret_number) {
+
+        document.getElementById("winnerResult")
+            .textContent =
+            "The secret number was " +
+            data.secret_number;
+
+    }
+
+    else {
+
+        document.getElementById("winnerResult")
+            .textContent =
+            "🎉 Great guessing!";
+
+    }
+
+}
+
+
+// ==========================================
+// NEW GAME
+// ==========================================
+
+function newGame() {
+
+    fetch("/new_game", {
+
+        method: "POST"
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        showGame();
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+    });
+
+}
+
+
+</script>
+
+</body>
+</html>

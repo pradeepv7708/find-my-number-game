@@ -46,3 +46,9 @@ find-my-number-game/
 ├── app.py
 ├── LICENSE
 └── README.md
+
+## Future Improvements
+
+The project can be further developed into a complete application
+with database integration. Future updates may include user login,
+score tracking, game history, leaderboard, and multiple difficulty levels.
